@@ -4,7 +4,11 @@ data Expr = Plus Expr Expr | Minus Expr Expr | Times Expr Expr | Div Expr Expr
     | Literal Float
 
 eval :: Expr -> Float
-eval = ???
+eval (Literal x) = x
+eval (Plus x y) = eval x + eval y
+eval (Minus x y) = eval x - eval y
+eval (Times x y) = eval x * eval y
+eval (Div x y) = eval x / eval y  -- Handle division (no checks for division by zero)
 
 -- Should eval to "5.0"
 test1 = Plus (Literal 3.0) (Literal 2.0)
